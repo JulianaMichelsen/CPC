@@ -22,6 +22,16 @@ class Resultado(BaseModel):
 
 @app.post("/calcular/")
 async def calcular_numeros(item: RequestData):
+    
+    if item.numero_vAgua <=0:
+        return "Não foi possível realizar a operação. Por favor, digite um número positivo."
+    
+    if item.numero_cCarne <0:
+        return "Não foi possível realizar a operação. Por favor, digite um número positivo."
+    
+    if item.numero_cEnergia <0:
+        return "Não foi possível realizar a operação. Por favor, digite um número positivo."
+    
     fator_EmissaoAgua = numero_EmissaoAgua / item.numero_vAgua
     
     fator_EmissaoCarne = numero_EmissaoCarne / item.numero_cCarne
